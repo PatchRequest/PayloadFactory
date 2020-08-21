@@ -1,4 +1,8 @@
+import enquiries
+
+
 class bcolors:
+
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'
@@ -10,14 +14,10 @@ class bcolors:
 
 
 def windows():
-    print(bcolors.BOLD + "Choose your payload:" + bcolors.ENDC)
-    print(bcolors.OKBLUE + "1. windows/meterpreter/reverse_tcp")
-    print("2. windows/meterpreter/reverse_tcp_uuid")
-    print("3. windows/meterpreter/reverse_tcp_dns")
-    print("4. windows/meterpreter/reverse_http")
-    print("5. windows/meterpreter/reverse_https")
-    print("6. windows/meterpreter/reverse_winhttp")
-    print("7. windows/meterpreter/reverse_winhttps" + bcolors.ENDC)
+
+    options = ["windows/meterpreter/reverse_tcp", "windows/meterpreter/reverse_tcp_uuid", "windows/meterpreter/reverse_tcp_dns",
+               "windows/meterpreter/reverse_http", "windows/meterpreter/reverse_https", "windows/meterpreter/reverse_winhttp", "windows/meterpreter/reverse_winhttps"]
+    choice = enquiries.choose("Which payload do you want?", options)
 
 
 def linux():
@@ -30,17 +30,6 @@ def macos():
 
 def android():
     pass
-
-
-def osSwitch(i):
-    switcher = {
-        1: windows,
-        2: linux,
-        3: macos,
-        4: android
-    }
-    func = switcher.get(i, lambda: print("No valid choice!"))
-    return func
 
 
 def main():
@@ -58,12 +47,10 @@ def main():
              |___/                                                  |___/ 
 
     """ + bcolors.ENDC)
+    options = ["Windows", "Linux", "MacOS", "Android"]
 
-    os = input(bcolors.BOLD +
-               "What is the target OS: " + bcolors.ENDC + bcolors.OKBLUE + "\n1. Windows\n2. Linux\n3. MacOS\n4. Android\n" + bcolors.ENDC + bcolors.WARNING + "Input:")
-    print(bcolors.ENDC)
-    func = osSwitch(int(os))
-    func()
+    choice = enquiries.choose("What is the target OS?", options)
+    globals()[choice.lower()]()
 
 
 if __name__ == "__main__":
