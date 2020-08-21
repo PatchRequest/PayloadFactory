@@ -1,7 +1,23 @@
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 
 def windows():
-    print("Windows!")
-    pass
+    print(bcolors.BOLD + "Choose your payload:" + bcolors.ENDC)
+    print(bcolors.OKBLUE + "1. windows/meterpreter/reverse_tcp")
+    print("2. windows/meterpreter/reverse_tcp_uuid")
+    print("3. windows/meterpreter/reverse_tcp_dns")
+    print("4. windows/meterpreter/reverse_http")
+    print("5. windows/meterpreter/reverse_https")
+    print("6. windows/meterpreter/reverse_winhttp")
+    print("7. windows/meterpreter/reverse_winhttps" + bcolors.ENDC)
 
 
 def linux():
@@ -29,7 +45,8 @@ def osSwitch(i):
 
 def main():
 
-    print("""
+    print(bcolors.FAIL + """
+
 
   _____            _                 _ ______         _                   
  |  __ \          | |               | |  ____|       | |                  
@@ -40,10 +57,11 @@ def main():
               __/ |                                                  __/ |
              |___/                                                  |___/ 
 
-    """)
+    """ + bcolors.ENDC)
 
-    os = input(
-        "What is the target OS:\n1. Windows\n2. Linux\n3. MacOS\n4. Android\nInput:")
+    os = input(bcolors.BOLD +
+               "What is the target OS: " + bcolors.ENDC + bcolors.OKBLUE + "\n1. Windows\n2. Linux\n3. MacOS\n4. Android\n" + bcolors.ENDC + bcolors.WARNING + "Input:")
+    print(bcolors.ENDC)
     func = osSwitch(int(os))
     func()
 
