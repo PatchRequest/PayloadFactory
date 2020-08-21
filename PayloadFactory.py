@@ -13,23 +13,43 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
+def chooseOptions(options):
+    choice = enquiries.choose("Which payload do you want?", options)
+    lhost = enquiries.freetext("LHOST:")
+    lport = enquiries.freetext("LPORT:")
+    return lhost, lport, choice
+
+
 def windows():
 
     options = ["windows/meterpreter/reverse_tcp", "windows/meterpreter/reverse_tcp_uuid", "windows/meterpreter/reverse_tcp_dns",
                "windows/meterpreter/reverse_http", "windows/meterpreter/reverse_https", "windows/meterpreter/reverse_winhttp", "windows/meterpreter/reverse_winhttps"]
-    choice = enquiries.choose("Which payload do you want?", options)
+    lhost, lport, choice = chooseOptions(options)
+    print(choice, lhost, lport)
 
 
 def linux():
-    pass
+
+    options = ["linux/x86/meterpreter/reverse_tcp", "linux/x86/meterpreter/reverse_tcp_uuid", "linux/x86/meterpreter/reverse_http",
+               "linux/x86/meterpreter/reverse_https", "linux/x86/meterpreter/reverse_ipv6_tcp", "linx/x86/meterpreter/reverse_nonx_tcp"]
+    lhost, lport, choice = chooseOptions(options)
+    print(choice, lhost, lport)
 
 
-def macos():
-    pass
+def java():
+
+    options = ["java/meterpreter/reverse_tcp",
+               "java/meterpreter/reverse_http", "java/meterpreter/reverse_https"]
+    lhost, lport, choice = chooseOptions(options)
+    print(choice, lhost, lport)
 
 
 def android():
-    pass
+
+    options = ["android/meterpreter/reverse_tcp",
+               "android/meterpreter/reverse_http", "android/meterpreter/reverse_https"]
+    lhost, lport, choice = chooseOptions(options)
+    print(choice, lhost, lport)
 
 
 def main():
@@ -47,7 +67,7 @@ def main():
              |___/                                                  |___/ 
 
     """ + bcolors.ENDC)
-    options = ["Windows", "Linux", "MacOS", "Android"]
+    options = ["Windows", "Linux", "Java", "Android"]
 
     choice = enquiries.choose("What is the target OS?", options)
     globals()[choice.lower()]()
