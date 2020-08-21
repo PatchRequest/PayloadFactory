@@ -1,4 +1,35 @@
-print("""
+
+def windows():
+    print("Windows!")
+    pass
+
+
+def linux():
+    pass
+
+
+def macos():
+    pass
+
+
+def android():
+    pass
+
+
+def osSwitch(i):
+    switcher = {
+        1: windows,
+        2: linux,
+        3: macos,
+        4: android
+    }
+    func = switcher.get(i, lambda: print("No valid choice!"))
+    return func
+
+
+def main():
+
+    print("""
 
   _____            _                 _ ______         _                   
  |  __ \          | |               | |  ____|       | |                  
@@ -9,8 +40,13 @@ print("""
               __/ |                                                  __/ |
              |___/                                                  |___/ 
 
- """)
+    """)
+
+    os = input(
+        "What is the target OS:\n1. Windows\n2. Linux\n3. MacOS\n4. Android\nInput:")
+    func = osSwitch(int(os))
+    func()
 
 
-os = input(
-    "What is the target OS:\n1. Windows\n2. Linux\n3. MacOS\n4. Android\nInput:")
+if __name__ == "__main__":
+    main()
