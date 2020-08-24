@@ -2,16 +2,6 @@ import enquiries
 import os
 
 
-class bcolors:
-
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
 
 
 def generatePayload(lhost, lport, payload, location):
@@ -65,7 +55,7 @@ def android():
 
 def main():
 
-    print(bcolors.FAIL + """
+    print("""
 
 
   _____            _                 _ ______         _                   
@@ -77,7 +67,7 @@ def main():
               __/ |                                                  __/ |
              |___/                                                  |___/ 
 
-    """ + bcolors.ENDC)
+    """)
     options = ["Windows", "Linux", "Java", "Android"]
 
     choice = enquiries.choose("What is the target OS?", options)
