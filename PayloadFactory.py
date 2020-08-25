@@ -7,9 +7,9 @@ import os
 def generatePayload(lhost, lport, payload, location):
     payloadTyp = payload.split("/")[0]
     if payloadTyp == "windows":
-        payloadTyp = ".exe"
+        payloadTyp = ".exe -f exe"
     if payloadTyp == "linux":
-        payloadTyp = ""
+        payloadTyp = ".elf -f elf"
     if payloadTyp == "android":
         payloadTyp = ".apk"
 
