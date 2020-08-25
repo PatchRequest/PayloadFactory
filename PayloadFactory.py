@@ -36,8 +36,8 @@ def windows():
 
 def linux():
 
-    options = ["linux/x86/meterpreter/reverse_tcp", "linux/x86/meterpreter/reverse_tcp_uuid", "linux/x86/meterpreter/reverse_http",
-               "linux/x86/meterpreter/reverse_https", "linux/x86/meterpreter/reverse_ipv6_tcp", "linx/x86/meterpreter/reverse_nonx_tcp"]
+    options = ["linux/x86/meterpreter/reverse_tcp", "linux/x86/meterpreter/reverse_tcp_uuid", "linux/x86/meterpreter_reverse_http",
+               "linux/x86/meterpreter_reverse_https", "linux/x86/meterpreter/reverse_ipv6_tcp", "linux/x86/meterpreter/reverse_nonx_tcp"]
     chooseOptions(options)
 
 
